@@ -68,27 +68,27 @@ template <typename T>
 void improved_bubble_sort_v2(T *arr, int length)
 {
 	int compared_count = 0;
-	int j, k;
+	int i, j;
 	int swapped_pos = length;
 	while (swapped_pos > 0)
 	{
-		k = swapped_pos;
+		j = swapped_pos;
 		swapped_pos = 0;
-		for (j = 1; j < k; ++j)
+		for (i = 1; i < j; ++i)
 		{
 			++compared_count;
-			if (arr[j - 1] > arr[j])
+			if (arr[i - 1] > arr[i])
 			{
-				swapped_pos = j;
-				std::swap(arr[j - 1], arr[j]);
+				swapped_pos = i;
+				std::swap(arr[i - 1], arr[i]);
 			}
 		}
 	}
 
 	printf("improved_bubble_sort_v2, compared_count: %u\n", compared_count);
 	printf("after improved_bubble_sort_v2: ");
-        for (int i = 0; i < length; ++i)
-                printf("%u ", arr[i]);
+        for (int k = 0; k < length; ++k)
+                printf("%u ", arr[k]);
 
         printf("\n");
 }
