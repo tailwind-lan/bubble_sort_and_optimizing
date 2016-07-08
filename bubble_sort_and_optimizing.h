@@ -48,11 +48,16 @@ void improved_bubble_sort_v1(T *arr, int length)
 		}
 
 		//上次内循环为发生交换，表明数组已全部有序，推出循环。
-		if (has_swapped)
+		if (!has_swapped)
 			break;
 	}
 
 	printf("improved_bubble_sort_v1, compared_count: %u\n", compared_count);
+	printf("after improved_bubble_sort_v1: ");
+	for (int k = 0; k < length; ++k)
+                printf("%u ", arr[k]);
+
+	printf("\n");
 }
 
 /*
@@ -63,19 +68,27 @@ template <typename T>
 void improved_bubble_sort_v2(T *arr, int length)
 {
 	int compared_count = 0;
-	for (int i = length; i > 1; --i)
+	int j, k;
+	int swapped_pos = length;
+	while (swapped_pos > 0)
 	{
-		int swapped_pos = i - 1;
-		for (int j = 0; j < swapped_pos; ++j)
+		k = swapped_pos;
+		swapped_pos = 0;
+		for (j = 1; j < k; ++j)
 		{
 			++compared_count;
-			if (arr[j] > arr[j + 1])
+			if (arr[j - 1] > arr[j])
 			{
 				swapped_pos = j;
-				std::swap(arr[j], arr[j + 1]);
+				std::swap(arr[j - 1], arr[j]);
 			}
 		}
 	}
 
 	printf("improved_bubble_sort_v2, compared_count: %u\n", compared_count);
+	printf("after improved_bubble_sort_v2: ");
+        for (int i = 0; i < length; ++i)
+                printf("%u ", arr[i]);
+
+        printf("\n");
 }
